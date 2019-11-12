@@ -7,8 +7,7 @@
 
     <?php
         $viewer = getenv( "HTTP_USER_AGENT" );
-        $css = "";
-
+        
         if (preg_match('/Chrome/i' , "$viewer")) {
             $css = 'chrome.css';
         } elseif (preg_match( "/Mozilla/i", "$viewer")) {
