@@ -7,7 +7,7 @@
 
     <?php
         $viewer = getenv( "HTTP_USER_AGENT" );
-        
+
         if (preg_match('/Chrome/i' , "$viewer")) {
             $css = 'chrome.css';
         } elseif (preg_match( "/Mozilla/i", "$viewer")) {
@@ -22,8 +22,7 @@
 
 <body >
 
-
     <div id="box"></div>
 
-</ body>
+</body>
 </html>
