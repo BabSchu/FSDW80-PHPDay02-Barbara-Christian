@@ -15,55 +15,59 @@
 <body>
 
 <?php
-$servername = "localhost";
-$username = "root";
-$password = "" ;
-$dbname = "test_database";
+  $servername = "localhost";
+  $username = "root";
+  $password = "" ;
+  $dbname = "test_database";
 
 // Create database
-$conn = mysqli_connect($servername, $username, $password);
-$sql = "CREATE DATABASE $dbname";
+  $conn = mysqli_connect($servername, $username, $password);
+  $sql = "CREATE DATABASE $dbname";
 
 // mysqli_query($conn, $sql);
 
-if  (mysqli_query($conn, $sql)) {
-    echo "Database $dbname created successfully! \n" ."<br>";
-} else {
-    echo "Error creating database $dbname: " . mysqli_error($conn) ."<br>";
-}
+  if  (mysqli_query($conn, $sql)) {
+      echo "Database $dbname created successfully! \n" ."<br>";
+  } else {
+      echo "Error creating database $dbname: " . mysqli_error($conn) ."<br>";
+  }
 
 // Create connection
-$conn = mysqli_connect($servername, $username, $password, $dbname);
+  $conn = mysqli_connect($servername, $username, $password, $dbname);
 
 // Check connection
-if (!$conn) {
-    die("Connection failed: "  . mysqli_connect_error() . "\n" ."<br>");
-}
+  if (!$conn) {
+      die("Connection failed: "  . mysqli_connect_error() . "\n" ."<br>");
+  }
+
+  unset($sql); //clears variable
 
 //sql to create table, here as a structure reference
-$sql = "CREATE TABLE Users (
-user_id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
-firstname VARCHAR(20) NOT NULL,
-lastname VARCHAR(20) NOT NULL,
-email VARCHAR(50),
-reg_date TIMESTAMP
-)";
+  $sql = "CREATE TABLE Users (
+          user_id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+          firstname VARCHAR(20) NOT NULL,
+          lastname VARCHAR(20) NOT NULL,
+          email VARCHAR(50),
+          reg_date TIMESTAMP
+          )";
 
-if (mysqli_query($conn, $sql)) {
-    echo "Table Users created successfully"  . "\n" ."<br>";
- } else {
-    echo  "Error creating table: " . mysqli_error($conn) . "\n" ."<br>";
- }
+  if (mysqli_query($conn, $sql)) {
+      echo "Table Users created successfully"  . "\n" ."<br>";
+  } else {
+      echo  "Error creating table: " . mysqli_error($conn) . "\n" ."<br>";
+  }
 
-$sql = "INSERT INTO Users (firstname, lastname, email)
-VALUES ('John', 'Doe', 'john@doe.com')";
+  unset($sql); //clears variable
 
-if (mysqli_query($conn, $sql)) {
-    echo "New record created.\n" ."<br>";
-} else {
-   echo  "Record creation error for: " . $sql . "\n" . mysqli_error($conn) ."<br>";
-}
-mysqli_close($conn);
+  $sql = "INSERT INTO Users (firstname, lastname, email)
+          VALUES ('John', 'Doe', 'john@doe.com')";
+
+  if (mysqli_query($conn, $sql)) {
+      echo "New record created.\n" ."<br>";
+  } else {
+    echo  "Record creation error for: " . $sql . "\n" . mysqli_error($conn) ."<br>";
+  }
+  mysqli_close($conn);
 ?>
 
   <!--JQuery<--->
